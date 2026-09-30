@@ -14,8 +14,8 @@ import java.util.Set;
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import net.runelite.api.ItemComposition;
-import net.runelite.api.ItemID;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.gameval.ItemID;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -161,7 +161,7 @@ public class AlchBuddyPlugin extends Plugin
 
 	private long getNatureRunePrice()
 	{
-		return itemManager.getItemPrice(ItemID.NATURE_RUNE);
+		return itemManager.getItemPrice(ItemID.NATURERUNE);
 	}
 
 	private void updateNatureRunePrice()
