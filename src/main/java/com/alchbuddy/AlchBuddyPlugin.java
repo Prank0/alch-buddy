@@ -166,13 +166,16 @@ public class AlchBuddyPlugin extends Plugin
 
 	private void updateNatureRunePrice()
 	{
-		long price = getNatureRunePrice();
-		SwingUtilities.invokeLater(() ->
+		clientThread.invoke(() ->
 		{
-			if (panel != null)
+			long price = getNatureRunePrice();
+			SwingUtilities.invokeLater(() ->
 			{
-				panel.setNatureRunePrice(price);
-			}
+				if (panel != null)
+				{
+					panel.setNatureRunePrice(price);
+				}
+			});
 		});
 	}
 
