@@ -36,7 +36,7 @@ final class AlchBuddyPanel extends PluginPanel
 	private final AlchBuddyPlugin plugin;
 	private final JTextField searchField = new JTextField();
 	private final JLabel naturePrice = new JLabel("Nature rune: loading…");
-	private final JLabel status = new JLabel("Enter at least 2 characters");
+	private final JLabel status = new JLabel("Loading items…");
 	private final AlchTableModel tableModel = new AlchTableModel();
 	private final JTable table = new JTable(tableModel);
 	private final Timer searchTimer;
@@ -127,15 +127,13 @@ final class AlchBuddyPanel extends PluginPanel
 	{
 		String query = searchField.getText().trim();
 		int currentRequest = ++requestId;
-		if (query.length() < 2)
-		{
-			tableModel.setItems(Collections.emptyList());
-			status.setText("Enter at least 2 characters");
-			return;
-		}
-
 		status.setText("Searching…");
 		plugin.search(query, currentRequest);
+	}
+
+	void refresh()
+	{
+		runSearch();
 	}
 
 	void showResults(int completedRequest, long natureRunePrice, List<AlchItem> items)
@@ -147,7 +145,7 @@ final class AlchBuddyPanel extends PluginPanel
 		}
 		setNatureRunePrice(natureRunePrice);
 		tableModel.setItems(items);
-		status.setText(items.size() + (items.size() == AlchBuddyPlugin.MAX_RESULTS ? "+ results" : " results"));
+		status.setText(items.size() + " results");
 	}
 
 	void setNatureRunePrice(long price)

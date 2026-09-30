@@ -3,7 +3,7 @@
 A RuneLite plugin for comparing Grand Exchange and alchemy values.
 
 - Highlights bank and inventory items when their high-alch value is greater than their current GE price plus one nature rune.
-- Provides a searchable sidebar with sortable columns for GE price, low alch, high alch, GE buy limit, and per-item high-alch profit.
+- Lists the full tradeable-item catalogue in a searchable sidebar with sortable columns for GE price, low alch, high alch, GE buy limit, and per-item high-alch profit.
 - Uses RuneLite's configured item-price source and current nature-rune price.
 - Never casts spells, clicks items, or changes menus.
 

@@ -36,7 +36,6 @@ import net.runelite.http.api.item.ItemPrice;
 )
 public class AlchBuddyPlugin extends Plugin
 {
-	static final int MAX_RESULTS = 250;
 	private static final int PRICE_REFRESH_TICKS = 10;
 
 	@Inject
@@ -71,6 +70,7 @@ public class AlchBuddyPlugin extends Plugin
 			.build();
 		clientToolbar.addNavigation(navigationButton);
 		updateNatureRunePrice();
+		panel.refresh();
 	}
 
 	@Override
@@ -154,9 +154,7 @@ public class AlchBuddyPlugin extends Plugin
 		}
 
 		items.sort(Comparator.comparing(item -> item.name, String.CASE_INSENSITIVE_ORDER));
-		return items.size() > MAX_RESULTS
-			? new ArrayList<>(items.subList(0, MAX_RESULTS))
-			: items;
+		return items;
 	}
 
 	private long getNatureRunePrice()
